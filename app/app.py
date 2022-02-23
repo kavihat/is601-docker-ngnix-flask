@@ -1,5 +1,7 @@
 """A simple flask web app"""
 from flask import Flask, render_template
+
+from controllers.about_controller import AboutController
 from controllers.index_controller import IndexController
 from werkzeug.debug import DebuggedApplication
 
@@ -11,3 +13,8 @@ app.wsgi_app = DebuggedApplication(app.wsgi_app, True)
 @app.route("/", methods=['GET'])
 def index_get():
     return IndexController.get()
+
+
+@app.route("/about", methods=['GET'])
+def about_get():
+    return AboutController.get()
